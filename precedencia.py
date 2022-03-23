@@ -13,7 +13,6 @@ Precedência (da menor para a maior):
 """
 from lark import Lark, Transformer, v_args
 
-
 grammar = Lark(
     r"""
 start  : expr
@@ -22,11 +21,11 @@ start  : expr
        | expr "-" term  -> sub
        | term
 
-?term  : term "*" pow  -> mul
-       | term "/" pow  -> div
+?term  : term "*" pow   -> mul
+       | term "/" pow   -> div
        | pow
 
-?pow   : atom "^" pow    -> pow
+?pow   : atom "^" pow   -> pow
        | atom
 
 ?atom  : NUMBER
@@ -37,7 +36,6 @@ NUMBER : /\d+(.\d+)?/
 """
 )
 
-
 @v_args(inline=True)
 class Calc(Transformer):
     from operator import add, sub, mul, truediv as div, pow
@@ -46,7 +44,6 @@ class Calc(Transformer):
 
     def start(self, expr):
         return expr
-
 
 def eval_calc(src):
     ast = grammar.parse(src)
