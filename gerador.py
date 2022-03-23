@@ -31,24 +31,34 @@ import random
 
 
 def random_example() -> str:
-    return "..."
+    return Fizz()
 
+def Fizz():
+    if random.random() < 0.5:
+        return "fizz"
+    else:
+        return "fizz(" + Fizz() + SepBuzz() + ")"
 
-def fizzbuzz():
-    return "..."
+def Buzz():
+    if random.random() < 0.5:
+        return "buzz"
+    else:
+        return "buzz(" + Number() + ", " + NumbersSep() + Buzz() + ")"
 
-
-def fizz():
-    return "..."
-
-
-def buzz():
-    return "..."
-
-
-def NUMBER():
+def Number():
     return str(random.randint(1, 100))
 
+def NumbersSep():
+    if random.random() < 0.5:
+        return Number() + ", " + NumbersSep()
+    else:
+        return ""
+
+def SepBuzz():
+    if random.random() < 0.5:
+        return ", " + Buzz()
+    else:
+        return ""
 
 if __name__ == "__main__":
     for i in range(1, 11):
