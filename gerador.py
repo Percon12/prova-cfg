@@ -34,25 +34,19 @@ def random_example() -> str:
     return Fizz()
 
 def Fizz():
-    if random.random() < 0.5:
-        return "fizz"
-    else:
-        return "fizz(" + Fizz() + SepBuzz() + ")"
+    if random.random() < 0.5: return "fizz"
+    else: return "fizz(" + Fizz() + SepBuzz() + ")"
 
 def Buzz():
-    if random.random() < 0.5:
-        return "buzz"
-    else:
-        return "buzz(" + Number() + ", " + NumbersSep() + Buzz() + ")"
+    if random.random() < 0.5: return "buzz"
+    else: return "buzz(" + Number() + ", " + NumbersSep() + Buzz() + ")"
 
 def Number():
     return str(random.randint(1, 100))
 
 def NumbersSep():
-    if random.random() < 0.5:
-        return Number() + ", " + NumbersSep()
-    else:
-        return ""
+    if random.random() < 0.5: return Number() + ", " + NumbersSep()
+    else: return ""
 
 def SepBuzz():
     if random.random() < 0.5:
